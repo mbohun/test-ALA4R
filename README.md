@@ -96,7 +96,7 @@ ala_config(verbose=TRUE)
 ```
 
 ##Examples
-We’ll use the plyr package throughout these examples, so load that now:
+We’ll use the `plyr` package throughout these examples, so load that now:
 ```R
 library(plyr) 
 ```
@@ -140,7 +140,7 @@ And we can see from the first result that penguins correspond to the family Sphe
 tx=taxinfo_download("family:SPHENISCIDAE",fields=c("guid","genus","nameComplete","rank"))
 tx=tx[tx$rank %in% c("species","subspecies"),] ## restrict to species and subspecies
 ```
-We can make a taxonomic tree plot using the phytools package:
+We can make a taxonomic tree plot using the `phytools` package:
 ```R
 ## as.phylo requires the taxonomic columns to be factors
 temp=colwise(factor, c("genus","scientificName"))(tx)
@@ -285,11 +285,11 @@ summary(x)
 ##  habitatMismatch: 14 records -- considered fatal
 ##  firstOfMonth: 65 records
 ```
-You can see that some of the points have assertions that are considered “fatal” (i.e. the occurrence record in question is unlikely to be suitable for subsequent analysis). We can use the occurrences_plot function to create a PDF file with a plot of this data, showing the points with fatal assertions (this will create an “Rplots.pdf” file in your working directory; not run here):
+You can see that some of the points have assertions that are considered “fatal” (i.e. the occurrence record in question is unlikely to be suitable for subsequent analysis). We can use the `occurrences_plot` function to create a PDF file with a plot of this data, showing the points with fatal assertions (this will create an “Rplots.pdf” file in your working directory; not run here):
 ```R
 occurrences_plot(x,qa="fatal")
 ```
-There are many other ways of producing spatial plots in R. The leafletR package provides a simple method of producing browser-based maps iwth panning, zooming, and background layers:
+There are many other ways of producing spatial plots in R. The `leafletR` package provides a simple method of producing browser-based maps iwth panning, zooming, and background layers:
 ```R
 library(leafletR)
 ## drop any records with missing lat/lon values: leaflet does not like them
@@ -342,7 +342,7 @@ Bin the locations into 0.5-degree grid cells:
 x$longitude=round(x$longitude*2)/2
 x$latitude=round(x$latitude*2)/2
 ```
-Create a sites-by-species data frame. This could also be done with e.g. the reshape library or the table() function, or indeed directly from ALA4R’s species_by_site function. Note: this process inherently makes some strong assumptions about absences in the data.
+Create a sites-by-species data frame. This could also be done with e.g. the reshape library or the table() function, or indeed directly from ALA4R’s `species_by_site` function. Note: this process inherently makes some strong assumptions about absences in the data.
 ```R
 ## discard genus- and higher-level records
 xsub=x$rank %in% c("species","subspecies","variety","form","cultivar")
