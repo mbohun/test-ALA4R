@@ -149,7 +149,7 @@ ax=as.phylo(~genus/scientificName,data=temp)
 tr=plotTree(ax,type="fan",fsize=0.7) ## plot it
 ```
 
-#TODO FIGURE
+![Alt text](./doc/images/figure-00.png?raw=true "plot of chunk unnamed-chunk-18")
 
 We can also plot the tree with images of the different penguin species. We’ll first extract a species profile for each species identifier (guid) in our results:
 ```R
